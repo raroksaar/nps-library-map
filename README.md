@@ -12,6 +12,10 @@ This project is an interactive web map for exploring National Park Service (NPS)
 ## Project Structure
 
 <pre> ├── data/
+    ├── sample-data/
+        ├──  IRMA_enhanced_reports_1.json
+        ├──  IRMA_enhanced_reports_2.json
+        ├── ... 
     ├── sample-data-part001.geojson
     ├── sample-data-part002.geojson
     ├── ... 
