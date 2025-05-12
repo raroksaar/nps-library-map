@@ -1,4 +1,3 @@
-
 library(jsonlite)
 
 parse_bbox <- function(s) {
@@ -10,7 +9,7 @@ parse_bbox <- function(s) {
   NULL                                                 # skip bad rows
 }
 
-data_dir <- "C:/Users/jdutcher/OneDrive - DOI/Desktop/Library Map Project/nps-library-map-master.5.06 Archive 10k Samples/reports"
+data_dir <- "."
 
 json_files <- list.files(data_dir, "\\.json$", full.names = TRUE)
 features   <- list()
@@ -28,29 +27,6 @@ for (f in json_files) {
   
   for (rec in recs) {
     
-    # ── pull numbers out of long_lat_display, fall back to long_lat ──────────
-    # nums <- as.numeric(unlist(
-    #   strsplit(paste(rec$long_lat_display, collapse = " "), "\\s+")
-    # ))
-    # nums <- nums[!is.na(nums)]
-    
-    # if (length(nums) == 0 &&
-    #     length(rec$long_lat) > 0 && nzchar(rec$long_lat[1])) {
-    #   nums <- as.numeric(
-    #     regmatches(rec$long_lat,
-    #                gregexpr("-?\\d+\\.?\\d*", rec$long_lat, perl = TRUE))[[1]]
-    #   )
-    #   nums <- nums[!is.na(nums)]
-    # }
-    
-    # # need an even number of values; otherwise skip
-    # if (length(nums) < 2 || length(nums) %% 2 != 0) next
-    
-    # # ── split into lon/lat pairs, drop dups, flip to [lat, lon] ─────────────
-    # pairs <- matrix(nums, ncol = 2, byrow = TRUE)             # [lon, lat]
-    # pairs <- unique(pairs)                                    # kill dup rows
-    # # pairs <- pairs[, c(2, 1), drop = FALSE]                   # → [lat, lon]
-    ## ── pull coordinates from long_lat_display, fall back to long_lat ─────────
     pairs <- do.call(rbind, lapply(rec$long_lat_display, parse_bbox))
     
     if (is.null(pairs) || nrow(pairs) == 0) {
