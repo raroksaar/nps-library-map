@@ -2,6 +2,13 @@
 
 This project is an interactive web map for exploring National Park Service (NPS) digital library records using spatial search. Inspired by [Open Parks Network](https://openparksnetwork.org/map/), it allows users to search by keyword and view associated metadata on a map.
 
+## Live Map
+
+You can view the interactive map at:
+
+**[https://dutcherj.github.io/nps-library-map/](https://dutcherj.github.io/nps-library-map/)** 
+
+
 ## What It Does
 
 - Displays points from tens of thousands of digitized records on a map.
@@ -28,3 +35,90 @@ This project is an interactive web map for exploring National Park Service (NPS)
     ├── make-manifest.js # Node script to generate manifest.json  
 ├── index.html # Main map interface 
 ├── README.md # Project documentation </pre>
+
+## How It Works
+
+### 1. Convert & Split Source Data
+
+- Raw JSON files were processed using `convert_to_geojson_pointonly.R`.
+- Each record was converted into a GeoJSON `Feature` with a `Point` or `MultiPoint` geometry.
+- Resulting files were split into a maximum of 10MB chunks to meet GitHub's file limitions.
+
+### 2. Build a Manifest
+
+- `make-manifest.js` scans the `data/` folder and lists all `.geojson` files in a single `manifest.json`.
+- This allows the map to dynamically load and merge all spatial records.
+
+### 3. Map & Search Interface
+
+- Built with [Leaflet](https://leafletjs.com/) and [ESRI Leaflet](https://developers.arcgis.com/esri-leaflet/).
+- Users can search for any keyword in record titles.
+- Matching features are displayed as clickable map markers.
+- Metadata is shown in popups with optional links.
+
+## Getting Started
+
+1. **Clone this repo** or download the ZIP.
+2. Make sure all files are in place, including:
+   - The `data/` folder with `.geojson` chunks and `manifest.json`
+   - The `js/main.js` and `index.html`
+3. Open `index.html` in any modern browser.
+
+## Searching the Map
+
+- Type a keyword into the search box (e.g., "wolf" or "mercury").
+- Press `Enter` or click **Search**.
+- Only matching results will be shown on the map.
+- Click markers to view full metadata.
+
+## Who This Is For
+
+- NPS and library staff seeking spatial access to digital holdings
+- Researchers and public users exploring historical documents
+- Developers looking to adapt or extend this open-source, browser-based map
+
+## Dependencies
+
+This tool uses the following external libraries (loaded via CDN):
+
+- [Leaflet](https://leafletjs.com/)
+- [Leaflet Draw](https://github.com/Leaflet/Leaflet.draw)
+- [ESRI Leaflet](https://developers.arcgis.com/esri-leaflet/)
+- [Leaflet MarkerCluster](https://github.com/Leaflet/Leaflet.markercluster)
+
+## Optional Scripts
+
+If modifying the dataset:
+
+- Run the R script `convert_to_geojson_pointonly.R` to regenerate GeoJSON from raw JSON.
+- Run `node tools/make-manifest.js` to update the manifest list after adding or removing `.geojson` files.
+
+## License
+
+MIT License
+
+Copyright (c) [2025] [JasonDutcher]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## Acknowledgments
+
+- Modeled after the excellent work done by the [Open Parks Network](https://openparksnetwork.org/)
+- Built using open-source libraries and publicly available basemaps
+
