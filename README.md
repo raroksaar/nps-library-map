@@ -97,7 +97,7 @@ If modifying the dataset:
 
 MIT License
 
-Copyright (c) 2025 Jason Dutcher
+Copyright (c) 2025 dutcherj
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
