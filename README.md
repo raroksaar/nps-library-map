@@ -9,6 +9,14 @@ You can view the interactive map at:
 **[https://dutcherj.github.io/nps-library-map/](https://dutcherj.github.io/nps-library-map/)** 
 
 
+## Screenshots
+
+### Full Map View
+<img src="https://drive.google.com/uc?export=view&id=1GWcGjOnQqATqjrnYjuYfdjMVe4noIVde" alt="QR Code" width="1000"/>
+
+### Search Results Example
+<img src="https://drive.google.com/uc?export=view&id=1gNaiFcW-DkJ6Yq90y0TZ_X46A5Q-z01g" alt="QR Code" width="1000"/>
+
 ## What It Does
 
 - Displays points from tens of thousands of digitized records on a map.
