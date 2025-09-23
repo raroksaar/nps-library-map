@@ -1,3 +1,5 @@
+This is a copy of https://github.com/dutcherj/nps-library-map created by Jason Dutcher
+
 # NPS Library Interactive Map
 
 This project is an interactive web map for exploring National Park Service (NPS) digital library records using spatial search. Inspired by [Open Parks Network](https://openparksnetwork.org/map/), it allows users to search by keyword and view associated metadata on a map.
