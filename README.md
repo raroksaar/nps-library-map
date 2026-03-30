@@ -104,5 +104,5 @@ If modifying the dataset:
 ## Acknowledgments
 
 - Modeled after the excellent work done by the [Open Parks Network](https://openparksnetwork.org/)
-- Built using open-source libraries and publicly available basemaps
+- Built using open-source libraries and publicly available basemaps.
 
